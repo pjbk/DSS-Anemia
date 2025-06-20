@@ -23,17 +23,18 @@ Add the Kaggle open-source dataset is available at:[https://www.kaggle.com/datas
 **Ref 1.** Mojumdar, M.U., et al.: Pediatric Anemia Dataset: Hematological Indicators and Diagnostic Classification. Mendeley Data, V1(2024). https://doi.org/10.17632/y7v7ff3wpj.1  
 **Ref 2.** Mojumdar, M.U., et al.: AnaDetect: An extensive dataset for advancing anemia detection, di-agnostic methods, and predictive analytics in healthcare. Data in Brief 58, 111195 (2025). https://doi.org/10.1016/j.dib.2024.111195  
 
-## Model Architecture
+## Model Pipeline Pseudocode
 ```python
-# model architecture  
+# model pipeline  
 Input: 
     Dataset D with Observations O, Features X, Target y
 Output: 
-    Processed Dataset D_processed, Model Evaluation M_ev
+    Processed Dataset D_processed, Model Evaluation M_ev, 
+    Confidence Intervals CI, Permutation Scores P_scores
 
 1.  D ← Load_Anemia_Dataset(O, X, y)
 
-2.  // Handle Missing Values
+2.  # Handle Missing Values
 3.  for each feature Xi in X do
 4.      D ← Impute_Missing_Values(D, Xi, method="mean", add_flag=True)
 5.      if Missing_Percentage(Xi) ≥ 50% then
@@ -41,12 +42,12 @@ Output:
 7.      end if
 8.  end for
 
-9.  // Encode Categorical Features
+9.  # Encode Categorical Features
 10. for each categorical feature Xi in X do
 11.     D ← One_Hot_Encode(D, Xi)
 12. end for
 
-13. // Remove Outliers using Z-Score
+13. # Remove Outliers using Z-Score
 14. for each datapoint Xij in D do
 15.     Z ← Compute_Z_Score(Xij)
 16.     if |Z| > 3 then
@@ -54,12 +55,12 @@ Output:
 18.     end if
 19. end for
 
-20. // Analyze Target Distribution
+20. # Analyze Target Distribution
 21. for each class yi in y do
 22.     p(yi) ← Count(yi) / Total_Count(y)
 23. end for
 
-24. // Statistical Feature Analysis
+24. # Statistical Feature Analysis
 25. for each feature Xi in X do
 26.     Compute: mean, median, std, skewness, kurtosis, p-value
 27.     for each feature Xj ≠ Xi do
@@ -70,26 +71,37 @@ Output:
 
 32. D_processed ← D
 
-33. // Define Models
-34. Models ← {DecisionTree, GradientBoosting, RandomForest, ExtraTrees}
+33. # Split Dataset
+34. D_train_val, D_test_strat ← Stratified_Split(D_processed, test_size=20%)
 
-35. // Model Optimization
-36. for each model M in Models do
-37.     M_optimized ← Grid_Search_Tuning(M, D_processed)
-38.     Optimized_Models.add(M_optimized)
-39. end for
+35. # Define Models
+36. Models ← {DecisionTree, GradientBoosting, RandomForest, ExtraTrees}
 
-40. // Model Evaluation
-41. for each M_opt in Optimized_Models do
-42.     Scores ← Cross_Validate(M_opt, folds=5)
-43.     M_ev.add((M_opt, Scores))
-44. end for
+37. # Model Optimization on Training Data
+38. for each model M in Models do
+39.     M_optimized ← Grid_Search_Tuning(M, D_train_val)
+40.     Optimized_Models.add(M_optimized)
+41. end for
 
-45. // SHAP Explainability on Best Model
-46. Best_Model ← Select_Best_Model(M_ev)
-47. SHAP_Explain(Best_Model, D_processed)
+42. # Cross-Validation Performance on Train/Val Set
+43. for each M_opt in Optimized_Models do
+44.     CV_Scores ← Cross_Validate(M_opt, D_train_val, folds=5)
+45.     M_ev.add((M_opt, CV_Scores))
+46. end for
 
-48. return D_processed, M_ev
+47. # Evaluate Final Models on Unseen Stratified Test Set
+48. for each M_opt in Optimized_Models do
+49.     Test_Score ← Evaluate(M_opt, D_test_strat)
+50.     CI ← Compute_Confidence_Interval(Test_Score, method="bootstrap", confidence_level=95%)
+51.     P_scores ← Permutation_Validation(M_opt, D_test_strat, n_permutations=1000)
+52.     Final_Eval.add((M_opt, Test_Score, CI, P_scores))
+53. end for
+
+54. # SHAP Explainability on Best Model
+55. Best_Model ← Select_Best_Model(Final_Eval)
+56. SHAP_Explain(Best_Model, D_processed)
+
+57. return D_processed, Final_Eval, Confidence_Intervals CI, Permutation Scores P_scores
 
 ```
 
