@@ -12,17 +12,17 @@ A clinical decision support system (CDSS) designed to diagnose anemia and assess
 
 ---
 
-## 🧠 Key Features
+## Key Features
 
-- ✅ **Real-Time Diagnosis**: Predicts anemia status based on clinical input.
-- 🧬 **Model Interpretability**: Explains predictions with SHAP visualizations; highlights the top 5 contributing features.
-- 📱 **Responsive UI**: Works seamlessly on both desktop and mobile devices.
-- 🌙 **Dark Mode Support**: Automatically adapts to the user's system theme.
-- 📊 **Risk Probability**: Displays confidence score for each prediction.
+- **Real-Time Diagnosis**: Predicts anemia status based on clinical input.
+- **Model Interpretability**: Explains predictions with SHAP visualizations; highlights the top 5 contributing features.
+- **Responsive UI**: Works seamlessly on both desktop and mobile devices.
+- **Dark Mode Support**: Automatically adapts to the user's system theme.
+- **Risk Probability**: Displays confidence score for each prediction.
 
 ---
 
-## 📊 Dataset Sources
+## Dataset Sources
 
 The model is trained using datasets from both local clinical sources and public repositories:
 
@@ -38,10 +38,10 @@ The model is trained using datasets from both local clinical sources and public 
 
 ---
 
-## 🧪 Model Pipeline (Pseudocode)
+## Model Pipeline
 
 ```python
-# model pipeline  
+# model pipeline pseudocode  
 Input: 
     Dataset D with Observations O, Features X, Target y
 Output: 
@@ -120,8 +120,8 @@ Output:
 57. return D_processed, Final_Eval, Confidence_Intervals CI, Permutation Scores P_scores
 
 ```
-
-## 🚀 Quick Start
+---
+## Quick Start
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/pjbk/dss-anemia.git
@@ -139,8 +139,9 @@ Output:
    ```
 
 4. Open the app in your browser at `http://localhost:8501`.
+---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 dss-anemia/
@@ -150,13 +151,13 @@ dss-anemia/
 ├── scaler.pkl
 └── requirements.txt
 ```
-
-## 📘 User Guide
+---
+## User Guide
 - **Input Data:** Provide patient's hematological and demographic data.
 - **Prediction Output:** Receive anemia risk prediction and associated probability.
 - **Visual Explanation:** View SHAP-based plot explaining the key contributing factors.
-
-## 🛠 Tools and Technologies
+---
+## Tools and Technologies
 | Tool           | Purpose                                         |
 | -------------- | ----------------------------------------------- |
 | `Scikit-learn` | Machine learning models and evaluation          |
@@ -164,4 +165,4 @@ dss-anemia/
 | `SHAP`         | Interpretable model explanations (XAI)          |
 | `Matplotlib`   | Data and SHAP visualization                     |
 
-
+---
