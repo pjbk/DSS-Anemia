@@ -1,4 +1,4 @@
-# Anemia Risk Predictor DSS
+# Interpretable Real-Time Anemia Risk Predictor
 
 An ensemble learning-powered web application designed to diagnose anemia and estimate its likelihood based on clinical hematological and demographic parameters. A real-time interface, developed with Streamlit, predicts anemia and enables data-driven clinical decisions at the point of care. This tool empowers medical practitioners and health professionals with a decision support system (DSS) that not only predicts anemia status but also explains the reasoning behind predictions using SHAP (SHapley Additive exPlanations) visualizations.
 
@@ -9,11 +9,11 @@ An ensemble learning-powered web application designed to diagnose anemia and est
 
 ## Key Features
 
-- **Accurate Disease Diagnosis**: Diagnoses Anemia with high precision (ensemble model's prediction accuracy: 99.67%).
+- **Accurate Disease Diagnosis**: Diagnoses Anemia with high precision.
 - **Model Explainability**: Utilizes SHAP-XAI to enhance understanding of AI predictions. Highlights the **top 5 influential features** for clinical insights..
 - **Responsive UI Design**: Ensures smooth user experience on both desktop and mobile devices.
 - **Dark Mode Support**: Automatically adapts to the user's preferred theme.
-- **Confidence Metrics**: Displays prediction probabilities to reflect the model’s certainty.
+- **Confidence Metrics**: Displays prediction probabilities (**Risk Score**) to reflect the model’s certainty.
 
 ## Dataset
 
