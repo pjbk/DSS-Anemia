@@ -152,9 +152,9 @@ dss-anemia/
 ```
 
 ## 📘 User Guide
-**Input Data:** Provide patient's hematological and demographic data.
-**Prediction Output:** Receive anemia risk prediction and associated probability.
-**Visual Explanation:** View SHAP-based plot explaining the key contributing factors.
+- **Input Data:** Provide patient's hematological and demographic data.
+- **Prediction Output:** Receive anemia risk prediction and associated probability.
+- **Visual Explanation:** View SHAP-based plot explaining the key contributing factors.
 
 ## 🛠 Tools and Technologies
 | Tool           | Purpose                                         |
