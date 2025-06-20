@@ -1,6 +1,6 @@
 # 🩺 Interpretable Real-Time Anemia Risk Predictor
 
-A clinical decision support system (CDSS) designed to diagnose anemia and assess its likelihood based on hematological and demographic parameters. Powered by a pre-trained **Random Forest Classifier** and developed using **Streamlit**, this web-based application offers real-time predictions and interpretable explanations to assist healthcare professionals at the point of care.
+A clinical decision support system (CDSS) designed to diagnose anemia and assess its likelihood based on hematological and demographic parameters. Powered by a pre-trained **Random Forest Classifier** and developed using **Streamlit**, this web-based application offers real-time predictions and interpretable explanations to assist healthcare professionals at the point of care. The model is trained on curated datasets from both clinical and open-source repositories, ensuring broad applicability and reliable performance.
 
 ---
 
