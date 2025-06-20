@@ -6,7 +6,7 @@ A clinical decision support system (CDSS) designed to diagnose anemia and assess
 
 ## 🌐 Live Web App
 
-**Launch Now**: [https://dss-anemia.streamlit.app/](https://dss-anemia.streamlit.app/)
+### **Launch Now**: [https://dss-anemia.streamlit.app/](https://dss-anemia.streamlit.app/)
 
 ![App Interface](https://github.com/pjbk/dss-anemia/blob/main/App%20interface.png)
 
@@ -32,7 +32,7 @@ The model is trained using datasets from both local clinical sources and public 
 - **📁 Kaggle Dataset** (Open Source):  
   [https://www.kaggle.com/datasets/biswaranjanrao/anemia-dataset](https://www.kaggle.com/datasets/biswaranjanrao/anemia-dataset)
 
-### 📚 References
+### References
 1. Mojumdar, M.U., et al. *Pediatric Anemia Dataset: Hematological Indicators and Diagnostic Classification*. Mendeley Data, V1 (2024). [DOI](https://doi.org/10.17632/y7v7ff3wpj.1)  
 2. Mojumdar, M.U., et al. *AnaDetect: An extensive dataset for advancing anemia detection, diagnostic methods, and predictive analytics in healthcare.* Data in Brief 58, 111195 (2025). [DOI](https://doi.org/10.1016/j.dib.2024.111195)
 
